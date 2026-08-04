@@ -1,0 +1,61 @@
+
+const express=require('express');
+
+const app=express();
+
+const orderItems = [
+  {
+    id: 1,
+    user: "Rahul",
+    items: [
+      { name: "Laptop", qty: 1, price: 50000 },
+      { name: "Mouse", qty: 1, price: 700 },
+    ],
+  },
+  {
+    id: 2,
+    user: "Vijay",
+    items: [
+      { name: "Phone", qty: 1, price: 20000 },
+      { name: "Case", qty: 2, price: 200 },
+    ],
+  },
+  {
+    id: 3,
+    user: "Meera",
+    items: [
+      { name: "Tablet", qty: 1, price: 15000 },
+      { name: "Cover", qty: 1, price: 500 },
+    ],
+  },
+  {
+    id: 4,
+    user: "Anita",
+    items: [
+      { name: "Headphones", qty: 1, price: 3000 },
+      { name: "Charger", qty: 1, price: 800 },
+    ],
+  },
+  {
+    id: 5,
+    user: "Karan",
+    items: null,
+  },
+];
+
+
+app.get('/order',(req,res)=>{
+
+    const id=Number(req.query.id);
+
+    const order=orderItems.find((item)=>item.id === id)
+
+    if(!order){
+       return res.json({messgae:"order not found"})
+    }
+    res.json({items:order.items})
+})
+
+app.listen(3000,()=>{
+    console.log("server running")
+})
