@@ -90,3 +90,18 @@ console.log(otp)
 //- Date formatting and manipulation
 
 
+let today=new Date()
+
+let day=today.getDate()
+let month=today.getMonth()+1
+let year=today.getFullYear()
+console.log(`${day}-${month}-${year}`)
+console.log(`${year}-${month}-${day}`);
+//tomorrow
+today.setDate(today.getDate()+1)
+console.log(today)
+//yesterday
+today.setDate(today.getDate()-1)
+console.log(today)
+
+
